@@ -13,15 +13,28 @@ const containerVariants = {
   },
 };
 
-const nextVariants = {
-  hidden: {
-    x: "-100vw",
-  },
-  visible: {
-    x: 0,
+// const nextVariants = {
+//   hidden: {
+//     x: "-100vw",
+//   },
+//   visible: {
+//     x: 0,
+//     transition: {
+//       type: "spring",
+//       stiffness: 120,
+//     },
+//   },
+// };
+
+const buttonVariants: Variants = {
+  hover: {
+    scale: 1.3,
+    textShadow: "0px 0px 8px rgb(255,255,255)",
+    boxShadow: "0px 0px 8px rgb(255,255,255)",
     transition: {
-      type: "spring",
-      stiffness: 120,
+      duration: 0.3,
+      repeat: Infinity,
+      repeatType: "mirror",
     },
   },
 };
@@ -56,14 +69,7 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <motion.div className="next" initial="hidden" animate="visible">
           <Link to="/toppings">
-            <motion.button
-              variants={nextVariants}
-              whileHover={{
-                scale: 1.1,
-                textShadow: "0px 0px 8px rgb(255,255,255)",
-                boxShadow: "0px 0px 8px rgb(255,255,255)",
-              }}
-            >
+            <motion.button variants={buttonVariants} whileHover="hover">
               Next
             </motion.button>
           </Link>
