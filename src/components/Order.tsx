@@ -1,10 +1,14 @@
 import { motion } from "framer-motion";
+import { useEffect } from "react";
 // import { useState } from "react";
 
 const containerVariants = {
   hidden: {
     opacity: 0,
     x: "100vw",
+    transition: {
+      staggerChildren: 0.5,
+    },
   },
   visible: {
     opacity: 1,
@@ -13,13 +17,13 @@ const containerVariants = {
       type: "spring",
       mass: 0.4,
       damping: 8,
-      when: "beforeChildren",
       staggerChildren: 0.4,
+      when: "beforeChildren",
     },
-    exit: {
-      x: "-100vh",
-      transition: { ease: "easeInOut" },
-    },
+    // exit: {
+    //   x: "-100vh",
+    //   transition: { ease: "easeInOut" },
+    // },
   },
 };
 
@@ -32,9 +36,15 @@ const childVariants = {
   },
 };
 
-const Order = ({ pizza }) => {
+const Order = ({ pizza, setShowModal }) => {
   // const [showTitle, setShowTitle] = useState(true);
   // setTimeout(() => setShowTitle(false), 4000);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true);
+    }, 5000);
+  }, [setShowModal]);
 
   return (
     <motion.div
